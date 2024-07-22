@@ -1,14 +1,19 @@
-'use strict'
+'use strict';
 
 function removeCharacters(input, charactersToRemove) {
-    const inputArr = input.split('');
+    let result = '';
 
-    const resultArr = inputArr.filter(char => !charactersToRemove.includes(char));
-
-    return resultArr.join('');
+    for (let char of input) {
+        if (char === ' ' || !charactersToRemove.includes(char)) {
+            result += char;
+        }
+    }
+    return result;
 }
 
-const input = "hello world";
-const charactersToRemove = ['l', 'd'];
 
-console.log(removeCharacters(input, charactersToRemove));
+const input = prompt('Введіть вихідний рядок');
+const charactersToRemove = prompt('Введіть символи для видалення').split('');
+const result = removeCharacters(input, charactersToRemove);
+alert(`Результат: ${result}`);
+console.log(result);
